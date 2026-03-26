@@ -1,23 +1,34 @@
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import StatsSection from "@/components/StatsSection";
-import AboutSection from "@/components/AboutSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import CtaSection from "@/components/CtaSection";
-import Footer from "@/components/Footer";
+import { Navbar } from "@/components/landing/Navbar";
+import { Footer } from "@/components/landing/Footer";
+import { HeroSection } from "@/components/landing/HeroSection";
+import { AboutSection } from "@/components/landing/AboutSection";
+import { BenefitsSection } from "@/components/landing/BenefitsSection";
+import { HowItWorksSection } from "@/components/landing/HowItWorksSection";
+import { PlansSection } from "@/components/landing/PlansSection";
+import { SystemPreviewSection } from "@/components/landing/SystemPreviewSection";
+import { SecuritySection } from "@/components/landing/SecuritySection";
+import { ContactSection } from "@/components/landing/ContactSection";
 
-export default function Index() {
+const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden pt-20">
       <Navbar />
-      <HeroSection />
-      <StatsSection />
-      <AboutSection />
-      <FeaturesSection />
-      <TestimonialsSection />
-      <CtaSection />
+      
+      {/* Sections */}
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <BenefitsSection />
+        <HowItWorksSection />
+        <PlansSection />
+        <SystemPreviewSection />
+        <SecuritySection />
+        <ContactSection />
+      </main>
+
       <Footer />
     </div>
   );
-}
+};
+
+export default Index;
