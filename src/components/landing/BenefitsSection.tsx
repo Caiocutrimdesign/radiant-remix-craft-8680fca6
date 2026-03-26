@@ -5,66 +5,60 @@ const features = [
   {
     icon: Clock,
     title: "Em tempo real",
-    description: "Visualização de localização, velocidade, trajeto e tempo parado.",
-    color: "from-blue-500 to-primary"
+    description: "Visualização de localização, velocidade, trajeto e tempo parado."
   },
   {
     icon: ShieldAlert,
     title: "Central de monitoramento",
-    description: "Coordenação e envio de informações em tempo real.",
-    color: "from-purple-500 to-secondary"
+    description: "Coordenação e envio de informações em tempo real."
   },
   {
     icon: Zap,
-    title: "Toda vez que é ligado",
-    description: "Envio automático de dados via GPS a cada 3 minutos.",
-    color: "from-green-500 to-emerald-400"
+    title: "Sempre que Ligado",
+    description: "Envio automático de dados via GPS a cada 3 minutos consecutivos."
   },
   {
     icon: Lock,
     title: "Bloqueio remoto",
-    description: "Controle direto pelo app ou pela nossa central 24h.",
-    color: "from-red-500 to-orange-500"
+    description: "Controle direto pelo app ou pela nossa central 24h em emergências."
   },
   {
     icon: MapPin,
-    title: "Histórico de localização",
-    description: "Acesso completo a rotas, horários e paradas efetuadas.",
-    color: "from-cyan-500 to-blue-400"
+    title: "Histórico detalhado",
+    description: "Acesso completo a rotas, horários e paradas efetuadas com precisão."
   },
   {
     icon: Wrench,
-    title: "Assistência veicular 24h",
-    description: "Reboque, chaveiro, troca de pneu e suporte sempre que precisar.",
-    color: "from-yellow-500 to-orange-400"
+    title: "Assistência 24h",
+    description: "Reboque, chaveiro, troca de pneu e suporte sempre que precisar."
   }
 ];
 
 export const BenefitsSection = () => {
   return (
-    <section id="beneficios" className="py-24 bg-black relative">
+    <section id="beneficios" className="py-24 bg-[#050505] border-t border-white/5 relative">
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-display font-bold text-white mb-6"
+            className="text-4xl md:text-5xl font-display font-light text-white mb-6"
           >
-             Características do <span className="neon-text-blue">Rastreador</span>
+             Características do <span className="font-semibold">Rastreador</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-gray-400 text-lg"
+            className="text-gray-400 text-lg font-light"
           >
             Tudo o que você precisa para ter controle absoluto e paz de espírito onde quer que seu veículo esteja.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -72,17 +66,14 @@ export const BenefitsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="glass-panel p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-all group overflow-hidden relative"
+              className="bg-[#0a0a0a] p-8 rounded-2xl border border-white/5 hover:border-white/20 hover:bg-[#111] transition-all group overflow-hidden"
             >
-              {/* Background gradient fade on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              
-              <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-gradient-to-br ${feature.color} bg-opacity-20`}>
-                <feature.icon className="w-7 h-7 text-white" />
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-white/5 border border-white/10 group-hover:bg-white group-hover:border-transparent transition-colors">
+                <feature.icon className="w-6 h-6 text-gray-300 group-hover:text-black transition-colors" />
               </div>
               
-              <h3 className="text-xl font-bold text-white mb-4 group-hover:text-primary transition-colors">{feature.title}</h3>
-              <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+              <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-white transition-colors">{feature.title}</h3>
+              <p className="text-gray-500 font-light leading-relaxed group-hover:text-gray-400 transition-colors">
                 {feature.description}
               </p>
             </motion.div>

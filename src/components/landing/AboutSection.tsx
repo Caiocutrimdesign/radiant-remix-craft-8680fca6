@@ -30,31 +30,28 @@ const AnimatedCounter = ({ value, label, icon: Icon, duration = 2 }: { value: nu
   }, [isInView, value, duration]);
 
   return (
-    <div ref={ref} className="glass-panel p-6 rounded-2xl border border-white/5 text-center flex flex-col items-center gap-3 transform hover:-translate-y-2 transition-transform duration-300">
-      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-2">
-        <Icon className="w-6 h-6" />
+    <div ref={ref} className="bg-[#0a0a0a] p-8 rounded-2xl border border-white/5 text-center flex flex-col items-center gap-4 transition-transform duration-500 hover:-translate-y-2">
+      <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-gray-300 mb-2">
+        <Icon className="w-5 h-5" />
       </div>
-      <h4 className="text-4xl md:text-5xl font-display font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400">
+      <h4 className="text-4xl md:text-5xl font-display font-light text-white">
         +{count.toLocaleString('pt-BR')}
       </h4>
-      <p className="text-sm text-primary uppercase tracking-widest font-bold">{label}</p>
+      <p className="text-xs text-gray-500 uppercase tracking-widest font-medium">{label}</p>
     </div>
   );
 };
 
 export const AboutSection = () => {
   return (
-    <section id="sobre" className="py-24 bg-[#050505] relative overflow-hidden">
-      {/* Glow Effects */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[150px] pointer-events-none" />
-      
+    <section id="sobre" className="py-32 bg-[#020202] relative border-t border-white/5">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-20 max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-secondary/30 bg-secondary/10 text-secondary text-sm font-medium mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300 text-xs tracking-widest uppercase font-medium mb-6"
           >
             <ShieldCheck className="w-4 h-4" />
             <span>Nossa História</span>
@@ -65,7 +62,7 @@ export const AboutSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-display font-bold text-white mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-display font-light text-white mb-8"
           >
             Solução em Rastreamento Veicular
           </motion.h2>
@@ -75,33 +72,21 @@ export const AboutSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="space-y-6 text-gray-400 text-lg leading-relaxed text-left"
+            className="space-y-8 text-gray-400 text-lg lg:text-xl font-light leading-relaxed text-left max-w-3xl mx-auto"
           >
-            <div>
-              <strong className="text-white block mb-1">Nossa História:</strong>
+            <p>
+              <strong className="text-white font-medium block mb-2">Fundação:</strong>
               Fundada com o propósito de proteger o patrimônio e oferecer mais tranquilidade para motoristas em todo o país, nossa empresa nasceu da vontade de levar tecnologia de rastreamento veicular de forma acessível e eficiente ao consumidor final.
-            </div>
-            <div>
-              <strong className="text-white block mb-1">Atuação:</strong>
+            </p>
+            <p>
+              <strong className="text-white font-medium block mb-2">Atuação Constante:</strong>
               Ao longo do tempo, consolidamos nossa atuação no varejo, oferecendo soluções práticas, atendimento humanizado e resultados reais para quem busca segurança no dia a dia.
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="mt-8"
-          >
-            <button className="px-8 py-3 glass-panel text-white font-bold rounded-xl hover:bg-white/10 transition-colors border border-white/20">
-              SAIBA MAIS
-            </button>
+            </p>
           </motion.div>
         </div>
 
         {/* CONTADORES ANIMADOS */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-24">
           <AnimatedCounter value={7000} label="Veículos Protegidos" icon={ShieldCheck} />
           <AnimatedCounter value={10} label="Anos de Experiência" icon={Target} />
           <AnimatedCounter value={2500} label="Veículos Recuperados" icon={Car} />

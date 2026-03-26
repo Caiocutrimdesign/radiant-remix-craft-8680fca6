@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, MessageSquare } from "lucide-react";
+import { CheckCircle2, ShoppingCart } from "lucide-react";
+import { CheckoutModal, Plan } from "./CheckoutModal";
 
-const plans = [
+const plans: Plan[] & { features: string[], recommended: boolean }[] = [
   {
     name: "Trimestral",
     price: "165,00",
@@ -13,13 +15,12 @@ const plans = [
       "Histórico de Rotas",
       "Alerta de Ignição"
     ],
-    recommended: false,
-    whatsappUrl: "https://wa.me/5598985992136?text=Quero+assinar+o+Plano+Trimestral"
+    recommended: false
   },
   {
     name: "Mensal (A partir de)",
     price: "50,00",
-    period: "/mês",
+    period: "/ mês",
     features: [
       "Instalação Grátis (Plano Anual)",
       "Rastreamento 24h",
@@ -28,8 +29,7 @@ const plans = [
       "Alertas no Aplicativo",
       "Suporte Técnico 24h"
     ],
-    recommended: true,
-    whatsappUrl: "https://wa.me/5598985992136?text=Quero+saber+mais+sobre+o+Plano+de+50+reais"
+    recommended: true
   },
   {
     name: "Anual",
@@ -43,30 +43,33 @@ const plans = [
       "Troca de Pneu e Chaveiro",
       "Atendimento Prioritário"
     ],
-    recommended: false,
-    whatsappUrl: "https://wa.me/5598985992136?text=Quero+assinar+o+Plano+Anual+Completo"
+    recommended: false
   }
 ];
 
 export const PlansSection = () => {
+  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
+
   return (
-    <section id="planos" className="py-24 bg-[#050505] relative overflow-hidden">
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[180px] pointer-events-none" />
+    <section id="planos" className="py-24 bg-[#020202] relative overflow-hidden">
+      <CheckoutModal 
+        isOpen={selectedPlan !== null} 
+        onClose={() => setSelectedPlan(null)} 
+        plan={selectedPlan} 
+      />
+
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[180px] pointer-events-none" />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-20 max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-block px-10 py-6 glass-panel rounded-3xl border border-primary/40 shadow-[0_0_50px_rgba(0,243,255,0.2)] mb-8"
-          >
-            <h2 className="text-5xl md:text-6xl font-display font-black text-white mb-2 leading-none">
-              A partir de <span className="neon-text-blue block md:inline mt-2 md:mt-0">R$ 50,00/mês</span>
+          <p className="text-sm tracking-widest text-gray-500 uppercase mb-4 font-medium">Planos a partir de</p>
+          <div className="inline-block mb-6">
+            <h2 className="text-5xl md:text-7xl font-display font-light text-white leading-tight">
+              R$ 50,00 <span className="text-3xl text-gray-500">/mês</span>
             </h2>
-          </motion.div>
+          </div>
           
-          <p className="text-xl text-gray-400">Transparência total e o melhor custo-benefício do mercado para manter seu veículo 100% monitorado.</p>
+          <p className="text-xl text-gray-400 font-light">Transparência total e o melhor custo-benefício do mercado para manter seu veículo 100% monitorado.</p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
@@ -77,56 +80,48 @@ export const PlansSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`relative glass-panel rounded-3xl p-8 transition-transform duration-500 hover:-translate-y-4 ${
+              className={`relative rounded-3xl p-8 transition-transform duration-500 hover:-translate-y-2 ${
                 plan.recommended 
-                  ? 'border-2 border-primary/70 shadow-[0_0_40px_rgba(0,243,255,0.15)] bg-gradient-to-b from-primary/10 to-transparent transform lg:scale-105 z-10' 
-                  : 'border border-white/5 bg-black/40'
+                  ? 'bg-[#111] border border-white/20 shadow-2xl z-10 scale-105' 
+                  : 'bg-[#0a0a0a] border border-white/5'
               }`}
             >
               {plan.recommended && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-primary to-blue-600 text-black font-bold rounded-full text-sm shadow-glow whitespace-nowrap">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 bg-white text-black font-semibold tracking-wider rounded-full text-xs uppercase shadow-lg">
                   MAIS ESCOLHIDO
                 </div>
               )}
 
               <div className="text-center mb-8 pt-4">
-                <h3 className="text-white font-bold text-2xl mb-4">{plan.name}</h3>
-                <div className="flex items-end justify-center gap-1">
-                  <span className="text-gray-400 font-bold mb-2">R$</span>
-                  <span className="text-5xl font-display font-black text-white">{plan.price}</span>
-                  <span className="text-gray-400 mb-2">{plan.period}</span>
+                <h3 className="text-gray-400 font-medium text-lg mb-2 uppercase tracking-wide">{plan.name}</h3>
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-gray-500 font-medium text-lg">R$</span>
+                  <span className="text-5xl font-display font-normal text-white">{plan.price}</span>
                 </div>
+                <div className="text-gray-500 mt-2 text-sm">{plan.period}</div>
               </div>
 
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-10 border-t border-white/5 pt-8">
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-3 text-gray-300">
                     <CheckCircle2 className={`w-5 h-5 flex-shrink-0 mt-0.5 ${plan.recommended ? 'text-primary' : 'text-gray-500'}`} />
-                    <span>{feature}</span>
+                    <span className="font-light">{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <div className="space-y-3">
-                <a 
-                  href={plan.whatsappUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`w-full py-4 rounded-xl flex items-center justify-center gap-2 font-bold transition-all ${
+                <button 
+                  onClick={() => setSelectedPlan({ name: plan.name, price: plan.price, period: plan.period })}
+                  className={`w-full py-4 rounded-xl flex items-center justify-center gap-2 font-semibold transition-all uppercase tracking-wide text-sm ${
                     plan.recommended 
-                      ? 'bg-primary text-black hover:shadow-glow hover:bg-white' 
-                      : 'bg-white/5 text-white hover:bg-white/10 hover:border-white/30 border border-white/10'
+                      ? 'bg-white text-black hover:bg-gray-200 shadow-md' 
+                      : 'bg-[#1a1a1a] text-white hover:bg-[#222] border border-white/10'
                   }`}
                 >
-                  <MessageSquare className="w-5 h-5" />
+                  <ShoppingCart className="w-4 h-4" />
                   ASSINAR PLANO
-                </a>
-                
-                {plan.recommended && (
-                   <button className="w-full py-3 text-sm text-gray-400 hover:text-white transition-colors">
-                     Ver todos os planos disponíveis
-                   </button>
-                )}
+                </button>
               </div>
             </motion.div>
           ))}

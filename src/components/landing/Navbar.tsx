@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ShieldAlert } from "lucide-react";
+import { Menu, X, Lock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const Navbar = () => {
@@ -11,98 +11,124 @@ export const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Sobre", href: "#sobre" },
-    { name: "Benefícios", href: "#beneficios" },
-    { name: "Como Funciona", href: "#como-funciona" },
-    { name: "Planos", href: "#planos" },
+  const menuItems = [
+    { label: "Início", id: "inicio" },
+    { label: "Empresa", id: "sobre" },
+    { label: "Planos", id: "planos" },
+    { label: "Nossas Unidades", id: "contato" },
+    { label: "Assistência 24 Horas", id: "beneficios" },
+    { label: "Depoimentos", id: "depoimentos" },
   ];
 
+  const scrollTo = (id: string, e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    setMobileMenuOpen(false);
+    if (id === 'inicio') {
+       window.scrollTo({ top: 0, behavior: "smooth" });
+       return;
+    }
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <header
+    <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-black/80 backdrop-blur-md border-b border-primary/20 py-3 shadow-glow" : "bg-transparent py-5"
+        isScrolled
+          ? "bg-[#020202]/95 backdrop-blur-md border-b border-white/5 py-4 shadow-lg"
+          : "bg-transparent py-6"
       }`}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* LOGO */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="relative h-12 flex items-center justify-center overflow-hidden transition-all group-hover:scale-105">
-            <img src="/2222.png" alt="Rastremix Logo" className="h-full w-auto object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-          </div>
-          <span className="font-display font-bold text-2xl tracking-wider text-white hidden sm:block">
-            RASTRE<span className="text-red-500">MIX</span>
-          </span>
-        </Link>
-
-        {/* DESKTOP NAV */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-sm font-medium text-gray-300 hover:text-primary transition-colors uppercase tracking-widest relative group"
-            >
-              {link.name}
-              <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full shadow-neon-blue"></span>
-            </a>
-          ))}
-        </nav>
-
-        {/* CTA BUTTON */}
-        <div className="hidden md:block">
-          <Link
-            to="/login"
-            className="px-6 py-2.5 bg-transparent border border-primary text-primary font-bold rounded-full hover:bg-primary hover:text-black transition-all shadow-[0_0_15px_rgba(0,243,255,0.3)] hover:shadow-[0_0_30px_rgba(0,243,255,0.7)]"
-          >
-            ENTRAR NO SISTEMA
+      <div className="container mx-auto px-6 grid grid-cols-2 lg:grid-cols-12 items-center gap-4">
+        {/* LOGO - Exactly as requested (Only logo, no text) */}
+        <div className="col-span-1 lg:col-span-2 flex items-center">
+          <Link to="/" className="flex items-center group">
+            <div className="relative h-14 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+              <img src="/2222.png" alt="Rastremix Logo" className="h-full w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+            </div>
           </Link>
         </div>
 
-        {/* MOBILE MENU TOGGLE */}
-        <button
-          className="md:hidden text-white hover:text-primary transition-colors"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
-        </button>
+        {/* DESKTOP MENU - Elite Minimalist Style */}
+        <div className="hidden lg:flex col-span-8 justify-center items-center gap-6 xl:gap-8">
+          {menuItems.map((item) => (
+            <button
+              key={item.label}
+              onClick={(e) => scrollTo(item.id, e)}
+              className="text-[#9CA3AF] text-[13px] font-medium tracking-wide hover:text-white hover:text-shadow-glow transition-all uppercase relative after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all hover:after:w-full"
+            >
+              {item.label}
+            </button>
+          ))}
+          <a 
+            href="#" 
+            className="text-[#9CA3AF] text-[13px] font-medium tracking-wide hover:text-white transition-all uppercase relative after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all hover:after:w-full"
+          >
+            2º Via Boleto
+          </a>
+        </div>
+
+        {/* CTA */}
+        <div className="hidden lg:flex col-span-2 justify-end items-center">
+          <Link
+            to="/login"
+            className="flex items-center gap-2 px-6 py-2.5 bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+          >
+            <Lock className="w-3.5 h-3.5" />
+            Acesse Seu Veículo
+          </Link>
+        </div>
+
+        {/* MOBILE TOGGLE */}
+        <div className="flex justify-end lg:hidden col-span-1">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-white"
+          >
+            {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
-      {/* MOBILE MENU overlay */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/95 backdrop-blur-xl border-b border-primary/20 overflow-hidden"
+            className="lg:hidden absolute top-full left-0 w-full bg-[#050505] border-b border-white/10 p-6 flex flex-col gap-4 shadow-xl overflow-hidden"
           >
-            <div className="flex flex-col items-center py-8 gap-6">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium text-gray-300 hover:text-primary tracking-widest uppercase"
-                >
-                  {link.name}
-                </a>
-              ))}
-              <Link
-                to="/login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="mt-4 px-8 py-3 bg-primary text-black font-bold rounded-full shadow-[0_0_20px_rgba(0,243,255,0.5)]"
+            {menuItems.map((item) => (
+              <button
+                key={item.label}
+                onClick={(e) => scrollTo(item.id, e)}
+                className="text-left text-gray-300 hover:text-white text-sm font-medium tracking-wider uppercase py-3 border-b border-white/5"
               >
-                ENTRAR NO SISTEMA
-              </Link>
-            </div>
+                {item.label}
+              </button>
+            ))}
+            <a href="#" className="text-left text-gray-300 hover:text-white text-sm font-medium tracking-wider uppercase py-3 border-b border-white/5">
+              2º Via Boleto
+            </a>
+            <Link
+              to="/login"
+              className="w-full mt-6 flex items-center justify-center gap-2 px-6 py-4 bg-white text-black font-bold uppercase text-xs tracking-wider"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <Lock className="w-4 h-4" />
+              Acesse Seu Veículo
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </nav>
   );
 };
