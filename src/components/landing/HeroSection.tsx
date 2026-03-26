@@ -82,7 +82,7 @@ export const HeroSection = () => {
               
               {/* HUD Overlays — dark glass style on white bg */}
               <div className="absolute top-6 right-6 z-20 backdrop-blur-md bg-black/80 border border-white/10 p-4 rounded-2xl flex items-center gap-4">
-                 <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,243,255,0.8)]" />
+                 <div className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse shadow-[0_0_10px_rgba(220,38,38,0.8)]" />
                  <div>
                    <div className="text-[10px] text-gray-400 tracking-widest uppercase mb-0.5">Sinal GPS</div>
                    <div className="text-white font-medium text-xs tracking-wide">CONECTADO</div>

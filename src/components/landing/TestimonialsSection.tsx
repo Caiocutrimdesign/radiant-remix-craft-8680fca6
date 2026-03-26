@@ -35,7 +35,7 @@ export const TestimonialsSection = () => {
 
   return (
     <section id="depoimentos" className="py-32 bg-[#020202] border-t border-white/5 relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[300px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[300px] bg-red-500/5 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-light text-white mb-6">
@@ -82,7 +82,7 @@ export const TestimonialsSection = () => {
               <button
                 key={idx}
                 onClick={() => setCurrent(idx)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${current === idx ? 'bg-primary w-8 shadow-[0_0_10px_rgba(0,243,255,0.8)]' : 'bg-white/20 hover:bg-white/40'}`}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${current === idx ? 'bg-red-600 w-8 shadow-[0_0_10px_rgba(220,38,38,0.8)]' : 'bg-white/20 hover:bg-white/40'}`}
               />
             ))}
           </div>

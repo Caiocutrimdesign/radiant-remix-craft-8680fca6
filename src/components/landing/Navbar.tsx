@@ -62,18 +62,18 @@ export const Navbar = () => {
             <button
               key={item.label}
               onClick={(e) => scrollTo(item.id, e)}
-              className="text-gray-800 text-[13px] font-semibold tracking-wide hover:text-blue-600 transition-colors uppercase relative group"
+              className="text-gray-800 text-[13px] font-semibold tracking-wide hover:text-red-600 transition-colors uppercase relative group"
             >
               {item.label}
-              <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-blue-600 transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-red-600 transition-all duration-300 group-hover:w-full" />
             </button>
           ))}
           <a 
             href="#" 
-            className="text-gray-800 text-[13px] font-semibold tracking-wide hover:text-blue-600 transition-colors uppercase relative group"
+            className="text-gray-800 text-[13px] font-semibold tracking-wide hover:text-red-600 transition-colors uppercase relative group"
           >
             2º Via Boleto
-            <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-blue-600 transition-all duration-300 group-hover:w-full" />
+            <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-red-600 transition-all duration-300 group-hover:w-full" />
           </a>
         </div>
 
@@ -81,7 +81,7 @@ export const Navbar = () => {
         <div className="hidden lg:flex col-span-2 justify-end items-center">
           <Link
             to="/login"
-            className="flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white font-semibold text-xs tracking-wider uppercase rounded-lg transition-all shadow-md hover:bg-blue-700 hover:shadow-lg"
+            className="flex items-center gap-2 px-6 py-2.5 bg-red-600 text-white font-semibold text-xs tracking-wider uppercase rounded-lg transition-all shadow-md hover:bg-red-700 hover:shadow-lg"
           >
             <span className="hidden xl:inline">Acesse seu veículo</span>
             <span className="xl:hidden">Entrar</span>
@@ -114,17 +114,17 @@ export const Navbar = () => {
                 <button
                   key={item.label}
                   onClick={(e) => scrollTo(item.id, e)}
-                  className="text-left py-4 border-b border-gray-100 text-gray-800 hover:text-blue-600 text-sm font-semibold tracking-wider uppercase transition-colors"
+                  className="text-left py-4 border-b border-gray-100 text-gray-800 hover:text-red-600 text-sm font-semibold tracking-wider uppercase transition-colors"
                 >
                   {item.label}
                 </button>
               ))}
-              <a href="#" className="text-left py-4 border-b border-gray-100 text-gray-800 hover:text-blue-600 text-sm font-semibold tracking-wider uppercase transition-colors">
+              <a href="#" className="text-left py-4 border-b border-gray-100 text-gray-800 hover:text-red-600 text-sm font-semibold tracking-wider uppercase transition-colors">
                 2º Via Boleto
               </a>
               <Link
                 to="/login"
-                className="w-full mt-8 flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 text-white font-semibold uppercase text-xs tracking-wider rounded-xl shadow-md hover:bg-blue-700"
+                className="w-full mt-8 flex items-center justify-center gap-2 px-6 py-4 bg-red-600 text-white font-semibold uppercase text-xs tracking-wider rounded-xl shadow-md hover:bg-red-700"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <Lock className="w-4 h-4" />
