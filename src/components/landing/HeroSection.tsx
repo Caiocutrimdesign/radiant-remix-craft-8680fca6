@@ -75,9 +75,9 @@ export const HeroSection = () => {
            {/* White background card with luxury car */}
            <div className="relative w-full max-w-lg aspect-[4/5] rounded-3xl overflow-hidden border border-gray-200 shadow-2xl group bg-white">
               <img 
-                 src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1000&auto=format&fit=crop" 
-                 alt="Luxury Car Tracking" 
-                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out mix-blend-multiply"
+                 src="/veiculos-hero.png" 
+                 alt="Frota Rastremix" 
+                 className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-1000 ease-out mix-blend-multiply p-4"
               />
               
               {/* HUD Overlays — dark glass style on white bg */}
