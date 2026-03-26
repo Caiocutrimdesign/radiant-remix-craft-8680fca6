@@ -72,16 +72,16 @@ export const HeroSection = () => {
           transition={{ duration: 1.5, delay: 0.3 }}
           className="relative hidden lg:flex justify-center items-center"
         >
-           <div className="relative w-full max-w-lg aspect-[4/5] rounded-3xl overflow-hidden glass-panel border border-white/10 shadow-2xl group">
-              <div className="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-colors duration-700" />
+           {/* White background card with luxury car */}
+           <div className="relative w-full max-w-lg aspect-[4/5] rounded-3xl overflow-hidden border border-gray-200 shadow-2xl group bg-white">
               <img 
-                 src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=1000&auto=format&fit=crop" 
-                 alt="Luxury Tech Tracking" 
-                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out"
+                 src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1000&auto=format&fit=crop" 
+                 alt="Luxury Car Tracking" 
+                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out mix-blend-multiply"
               />
               
-              {/* Modern HUD Overlays */}
-              <div className="absolute top-6 right-6 z-20 backdrop-blur-md bg-white/[0.05] border border-white/10 p-4 rounded-2xl flex items-center gap-4">
+              {/* HUD Overlays — dark glass style on white bg */}
+              <div className="absolute top-6 right-6 z-20 backdrop-blur-md bg-black/80 border border-white/10 p-4 rounded-2xl flex items-center gap-4">
                  <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,243,255,0.8)]" />
                  <div>
                    <div className="text-[10px] text-gray-400 tracking-widest uppercase mb-0.5">Sinal GPS</div>
@@ -89,7 +89,7 @@ export const HeroSection = () => {
                  </div>
               </div>
 
-              <div className="absolute bottom-6 left-6 right-6 z-20 backdrop-blur-md bg-[#050505]/80 border border-white/10 p-5 rounded-2xl">
+              <div className="absolute bottom-6 left-6 right-6 z-20 backdrop-blur-md bg-black/85 border border-white/10 p-5 rounded-2xl">
                  <div className="flex justify-between items-end mb-4">
                    <div>
                       <div className="text-[10px] text-gray-400 tracking-widest uppercase mb-1">Veículo 01</div>

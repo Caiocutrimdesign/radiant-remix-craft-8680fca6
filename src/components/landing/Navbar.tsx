@@ -42,8 +42,8 @@ export const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
         isScrolled
-          ? "bg-[#020202]/85 backdrop-blur-xl border-white/10 py-3 shadow-2xl"
-          : "bg-transparent border-transparent py-6"
+          ? "bg-white/95 backdrop-blur-xl border-gray-200 py-3 shadow-lg"
+          : "bg-white border-gray-100 py-5"
       }`}
     >
       <div className="container mx-auto px-6 grid grid-cols-2 lg:grid-cols-12 items-center gap-4">
@@ -62,18 +62,18 @@ export const Navbar = () => {
             <button
               key={item.label}
               onClick={(e) => scrollTo(item.id, e)}
-              className="text-[#888] text-[13px] font-medium tracking-wide hover:text-white transition-colors uppercase relative group"
+              className="text-gray-800 text-[13px] font-semibold tracking-wide hover:text-blue-600 transition-colors uppercase relative group"
             >
               {item.label}
-              <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-blue-600 transition-all duration-300 group-hover:w-full" />
             </button>
           ))}
           <a 
             href="#" 
-            className="text-[#888] text-[13px] font-medium tracking-wide hover:text-white transition-colors uppercase relative group"
+            className="text-gray-800 text-[13px] font-semibold tracking-wide hover:text-blue-600 transition-colors uppercase relative group"
           >
             2º Via Boleto
-            <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
+            <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-blue-600 transition-all duration-300 group-hover:w-full" />
           </a>
         </div>
 
@@ -81,11 +81,10 @@ export const Navbar = () => {
         <div className="hidden lg:flex col-span-2 justify-end items-center">
           <Link
             to="/login"
-            className="group relative flex items-center gap-2 px-6 py-2.5 bg-primary text-[#020202] font-semibold text-xs tracking-wider uppercase rounded-lg overflow-hidden transition-all shadow-lg hover:shadow-[0_0_20px_rgba(0,243,255,0.4)]"
+            className="flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white font-semibold text-xs tracking-wider uppercase rounded-lg transition-all shadow-md hover:bg-blue-700 hover:shadow-lg"
           >
-            <div className="absolute inset-0 w-full h-full bg-white/30 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-            <span className="relative z-10 hidden xl:inline">Acesse seu veículo</span>
-            <span className="relative z-10 xl:hidden">Entrar</span>
+            <span className="hidden xl:inline">Acesse seu veículo</span>
+            <span className="xl:hidden">Entrar</span>
           </Link>
         </div>
 
@@ -108,24 +107,24 @@ export const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden absolute top-full left-0 w-full bg-[#050505]/95 backdrop-blur-2xl border-b border-white/10 shadow-2xl overflow-hidden"
+            className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-2xl overflow-hidden"
           >
             <div className="px-6 py-8 flex flex-col gap-2">
               {menuItems.map((item) => (
                 <button
                   key={item.label}
                   onClick={(e) => scrollTo(item.id, e)}
-                  className="text-left py-4 border-b border-white/5 text-[#888] hover:text-white text-sm font-medium tracking-wider uppercase transition-colors"
+                  className="text-left py-4 border-b border-gray-100 text-gray-800 hover:text-blue-600 text-sm font-semibold tracking-wider uppercase transition-colors"
                 >
                   {item.label}
                 </button>
               ))}
-              <a href="#" className="text-left py-4 border-b border-white/5 text-[#888] hover:text-white text-sm font-medium tracking-wider uppercase transition-colors">
+              <a href="#" className="text-left py-4 border-b border-gray-100 text-gray-800 hover:text-blue-600 text-sm font-semibold tracking-wider uppercase transition-colors">
                 2º Via Boleto
               </a>
               <Link
                 to="/login"
-                className="w-full mt-8 flex items-center justify-center gap-2 px-6 py-4 bg-primary text-black font-semibold uppercase text-xs tracking-wider rounded-xl shadow-[0_0_20px_rgba(0,243,255,0.3)]"
+                className="w-full mt-8 flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 text-white font-semibold uppercase text-xs tracking-wider rounded-xl shadow-md hover:bg-blue-700"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <Lock className="w-4 h-4" />
