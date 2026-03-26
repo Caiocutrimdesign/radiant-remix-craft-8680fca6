@@ -36,14 +36,14 @@ const features = [
 
 export const BenefitsSection = () => {
   return (
-    <section id="beneficios" className="py-24 bg-[#050505] border-t border-white/5 relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+    <section id="beneficios" className="py-32 bg-[#020202] border-t border-white/5 relative">
+      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+        <div className="text-center mb-24 max-w-3xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-display font-light text-white mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-display font-light text-white mb-6"
           >
              Características do <span className="font-semibold">Rastreador</span>
           </motion.h2>
@@ -52,13 +52,13 @@ export const BenefitsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-gray-400 text-lg font-light"
+            className="text-[#888] text-lg lg:text-xl font-light leading-relaxed"
           >
             Tudo o que você precisa para ter controle absoluto e paz de espírito onde quer que seu veículo esteja.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -66,14 +66,14 @@ export const BenefitsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-[#0a0a0a] p-8 rounded-2xl border border-white/5 hover:border-white/20 hover:bg-[#111] transition-all group overflow-hidden"
+              className="bg-white/[0.02] backdrop-blur-md p-10 rounded-2xl border border-white/10 text-left transition-all duration-500 hover:-translate-y-2 shadow-lg hover:border-white/20 group hover:bg-white/[0.04]"
             >
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-white/5 border border-white/10 group-hover:bg-white group-hover:border-transparent transition-colors">
-                <feature.icon className="w-6 h-6 text-gray-300 group-hover:text-black transition-colors" />
+              <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-8 bg-white/5 border border-white/10 group-hover:bg-white group-hover:border-transparent transition-colors duration-500">
+                <feature.icon className="w-6 h-6 text-gray-400 group-hover:text-black transition-colors duration-500" />
               </div>
               
-              <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-white transition-colors">{feature.title}</h3>
-              <p className="text-gray-500 font-light leading-relaxed group-hover:text-gray-400 transition-colors">
+              <h3 className="text-xl font-semibold text-white mb-4 tracking-wide">{feature.title}</h3>
+              <p className="text-[#888] font-light leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>

@@ -21,7 +21,7 @@ export const Navbar = () => {
     { label: "Empresa", id: "sobre" },
     { label: "Planos", id: "planos" },
     { label: "Nossas Unidades", id: "contato" },
-    { label: "Assistência 24 Horas", id: "beneficios" },
+    { label: "Assistência 24h", id: "beneficios" },
     { label: "Depoimentos", id: "depoimentos" },
   ];
 
@@ -40,49 +40,52 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
         isScrolled
-          ? "bg-[#020202]/95 backdrop-blur-md border-b border-white/5 py-4 shadow-lg"
-          : "bg-transparent py-6"
+          ? "bg-[#020202]/85 backdrop-blur-xl border-white/10 py-3 shadow-2xl"
+          : "bg-transparent border-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-6 grid grid-cols-2 lg:grid-cols-12 items-center gap-4">
-        {/* LOGO - Exactly as requested (Only logo, no text) */}
+        {/* LOGO (LEFT) */}
         <div className="col-span-1 lg:col-span-2 flex items-center">
           <Link to="/" className="flex items-center group">
-            <div className="relative h-14 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-              <img src="/2222.png" alt="Rastremix Logo" className="h-full w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+            <div className={`relative flex items-center justify-center transition-all duration-700 group-hover:opacity-80 ${isScrolled ? 'h-10' : 'h-12'}`}>
+              <img src="/2222.png" alt="Rastremix Logo" className="h-full w-auto object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
             </div>
           </Link>
         </div>
 
-        {/* DESKTOP MENU - Elite Minimalist Style */}
+        {/* MENU (CENTER) - High-end minimalist */}
         <div className="hidden lg:flex col-span-8 justify-center items-center gap-6 xl:gap-8">
           {menuItems.map((item) => (
             <button
               key={item.label}
               onClick={(e) => scrollTo(item.id, e)}
-              className="text-[#9CA3AF] text-[13px] font-medium tracking-wide hover:text-white hover:text-shadow-glow transition-all uppercase relative after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all hover:after:w-full"
+              className="text-[#888] text-[13px] font-medium tracking-wide hover:text-white transition-colors uppercase relative group"
             >
               {item.label}
+              <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
             </button>
           ))}
           <a 
             href="#" 
-            className="text-[#9CA3AF] text-[13px] font-medium tracking-wide hover:text-white transition-all uppercase relative after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all hover:after:w-full"
+            className="text-[#888] text-[13px] font-medium tracking-wide hover:text-white transition-colors uppercase relative group"
           >
             2º Via Boleto
+            <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
           </a>
         </div>
 
-        {/* CTA */}
+        {/* CTA (RIGHT) */}
         <div className="hidden lg:flex col-span-2 justify-end items-center">
           <Link
             to="/login"
-            className="flex items-center gap-2 px-6 py-2.5 bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+            className="group relative flex items-center gap-2 px-6 py-2.5 bg-primary text-[#020202] font-semibold text-xs tracking-wider uppercase rounded-lg overflow-hidden transition-all shadow-lg hover:shadow-[0_0_20px_rgba(0,243,255,0.4)]"
           >
-            <Lock className="w-3.5 h-3.5" />
-            Acesse Seu Veículo
+            <div className="absolute inset-0 w-full h-full bg-white/30 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+            <span className="relative z-10 hidden xl:inline">Acesse seu veículo</span>
+            <span className="relative z-10 xl:hidden">Entrar</span>
           </Link>
         </div>
 
@@ -92,40 +95,43 @@ export const Navbar = () => {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 text-white"
           >
-            {mobileMenuOpen ? <X /> : <Menu />}
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* MOBILE MENU - High End Drawer/Dropdown */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden absolute top-full left-0 w-full bg-[#050505] border-b border-white/10 p-6 flex flex-col gap-4 shadow-xl overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="lg:hidden absolute top-full left-0 w-full bg-[#050505]/95 backdrop-blur-2xl border-b border-white/10 shadow-2xl overflow-hidden"
           >
-            {menuItems.map((item) => (
-              <button
-                key={item.label}
-                onClick={(e) => scrollTo(item.id, e)}
-                className="text-left text-gray-300 hover:text-white text-sm font-medium tracking-wider uppercase py-3 border-b border-white/5"
+            <div className="px-6 py-8 flex flex-col gap-2">
+              {menuItems.map((item) => (
+                <button
+                  key={item.label}
+                  onClick={(e) => scrollTo(item.id, e)}
+                  className="text-left py-4 border-b border-white/5 text-[#888] hover:text-white text-sm font-medium tracking-wider uppercase transition-colors"
+                >
+                  {item.label}
+                </button>
+              ))}
+              <a href="#" className="text-left py-4 border-b border-white/5 text-[#888] hover:text-white text-sm font-medium tracking-wider uppercase transition-colors">
+                2º Via Boleto
+              </a>
+              <Link
+                to="/login"
+                className="w-full mt-8 flex items-center justify-center gap-2 px-6 py-4 bg-primary text-black font-semibold uppercase text-xs tracking-wider rounded-xl shadow-[0_0_20px_rgba(0,243,255,0.3)]"
+                onClick={() => setMobileMenuOpen(false)}
               >
-                {item.label}
-              </button>
-            ))}
-            <a href="#" className="text-left text-gray-300 hover:text-white text-sm font-medium tracking-wider uppercase py-3 border-b border-white/5">
-              2º Via Boleto
-            </a>
-            <Link
-              to="/login"
-              className="w-full mt-6 flex items-center justify-center gap-2 px-6 py-4 bg-white text-black font-bold uppercase text-xs tracking-wider"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <Lock className="w-4 h-4" />
-              Acesse Seu Veículo
-            </Link>
+                <Lock className="w-4 h-4" />
+                Acesse Seu Veículo
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

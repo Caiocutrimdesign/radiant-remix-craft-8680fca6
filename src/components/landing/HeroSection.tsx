@@ -1,97 +1,106 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, ShieldCheck, MessageCircle } from "lucide-react";
+import { MessageCircle, Lock } from "lucide-react";
 
 export const HeroSection = () => {
   const whatsappLink = "https://wa.me/5598985992136?text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+o+plano+de+rastreamento+de+R%24+50%2Fm%C3%AAs.";
 
   return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-[#020202]">
-      {/* Subtle Premium Background Lighting */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1593460354583-4224ab273433?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat opacity-20 mix-blend-luminosity filter brightness-50" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-[#020202]/90 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#020202] via-[#020202]/80 to-transparent" />
-
-      <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+    <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-[#020202]">
+      {/* Absolute Minimal Ambient */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+      
+      <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        
+        {/* LEFTSIDE: Text & Actions */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="col-span-12 lg:col-span-6 space-y-8"
+          className="space-y-10"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-gray-300 text-xs tracking-widest font-medium uppercase mb-2">
-            <ShieldCheck className="w-4 h-4 text-primary" />
-            <span>Sistema Avançado de Segurança</span>
+          <div className="space-y-6">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl tracking-tight font-display font-medium leading-[1.05] text-white">
+              Rastreamento Veicular <span className="font-light block mt-2">Inteligente</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-[#888] max-w-lg leading-relaxed font-light">
+              O Rastreador Veicular da Rastremix é a solução perfeita para proteger seu veículo 24 horas por dia.
+            </p>
           </div>
-          
-          <h1 className="text-5xl md:text-6xl lg:text-7xl tracking-tight font-display font-medium leading-[1.1] text-white">
-            Rastreamento Veicular <span className="font-light text-primary block mt-2">Inteligente</span>
-          </h1>
-          
-          <p className="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed font-light">
-            O Rastreador Veicular da Rastremix é a solução perfeita para proteger seu veículo 24 horas por dia.
-          </p>
 
           {/* Elegant Pricing Display */}
-          <div className="py-6 relative">
-            <p className="text-sm tracking-widest text-gray-500 uppercase mb-2 font-medium">Planos a partir de</p>
-            <h2 className="text-5xl md:text-6xl font-display font-normal text-white flex items-baseline gap-2">
-              R$ 50,00 <span className="text-2xl text-gray-500 font-light">/ mês</span>
-            </h2>
-            <p className="text-xs text-gray-500 mt-4 max-w-sm block">
+          <div className="py-6 border-y border-white/[0.05]">
+            <p className="text-sm tracking-widest text-[#666] uppercase mb-1 font-medium">Planos a partir de</p>
+            <div className="flex items-baseline gap-2">
+              <h2 className="text-4xl md:text-5xl font-display font-light text-white">
+                R$ 50,00 
+              </h2>
+              <span className="text-xl text-[#666] font-light">/ mês</span>
+            </div>
+            <p className="text-xs text-[#555] mt-3 max-w-sm block">
               *Consulte valores para o seu veículo. Instalação grátis nos planos anuais.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          {/* Buttons Layout */}
+          <div className="flex flex-col sm:flex-row gap-4">
             <a 
               href={whatsappLink}
               target="_blank"
               rel="noreferrer"
-              className="group relative px-8 py-4 bg-white text-black font-semibold text-[15px] hover:bg-gray-100 transition-all flex items-center justify-center gap-3 overflow-hidden shadow-lg"
+              className="flex items-center justify-center gap-3 px-8 py-4 bg-primary text-black font-semibold text-[14px] uppercase tracking-wide rounded-xl hover:bg-white hover:text-black hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-300 transform hover:-translate-y-1"
             >
               <MessageCircle className="w-5 h-5 fill-black" />
-              <span className="tracking-wide">FALAR COM UM CONSULTOR</span>
+              Falar com consultor
             </a>
             
             <Link 
               to="/login"
-              className="group px-8 py-4 bg-transparent border border-white/20 text-white font-semibold text-[15px] hover:bg-white/5 transition-all flex items-center justify-center gap-3"
+              className="flex items-center justify-center gap-3 px-8 py-4 bg-transparent border border-white/20 text-white font-semibold text-[14px] uppercase tracking-wide rounded-xl hover:bg-white/5 transition-all duration-300 transform hover:-translate-y-1"
             >
-              <span className="tracking-wide">ACESSAR SISTEMA</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              Acessar Sistema
+              <Lock className="w-4 h-4 ml-1" />
             </Link>
           </div>
         </motion.div>
 
+        {/* RIGHTSIDE: High-end Interface Image */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, delay: 0.3 }}
-          className="col-span-12 lg:col-span-6 relative hidden lg:flex justify-end items-center h-full"
+          className="relative hidden lg:flex justify-center items-center"
         >
-           {/* High-End HUD / System Visualization over Car directly baked via CSS overlay magic */}
-           <div className="w-[120%] h-[600px] relative -right-20">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020202]/30 to-[#020202] z-10" />
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#020202]/50 to-[#020202] z-10" />
+           <div className="relative w-full max-w-lg aspect-[4/5] rounded-3xl overflow-hidden glass-panel border border-white/10 shadow-2xl group">
+              <div className="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-colors duration-700" />
               <img 
-                 src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=1200&auto=format&fit=crop" 
-                 alt="Luxury Tracker System" 
-                 className="w-full h-full object-cover rounded-3xl opacity-80 filter contrast-125"
+                 src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=1000&auto=format&fit=crop" 
+                 alt="Luxury Tech Tracking" 
+                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out"
               />
               
-              {/* Premium HUD Overlay Elements */}
-              <div className="absolute top-10 right-10 z-20 glass-panel border border-white/10 p-4 rounded-xl backdrop-blur-md opacity-80 flex items-center gap-3">
-                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              {/* Modern HUD Overlays */}
+              <div className="absolute top-6 right-6 z-20 backdrop-blur-md bg-white/[0.05] border border-white/10 p-4 rounded-2xl flex items-center gap-4">
+                 <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,243,255,0.8)]" />
                  <div>
-                   <div className="text-[10px] text-gray-400 tracking-widest uppercase">GPS SIGNAL</div>
-                   <div className="text-white font-mono text-xs">AQUISIÇÃO OTIMIZADA</div>
+                   <div className="text-[10px] text-gray-400 tracking-widest uppercase mb-0.5">Sinal GPS</div>
+                   <div className="text-white font-medium text-xs tracking-wide">CONECTADO</div>
                  </div>
               </div>
-              
-              {/* Tracking grid overlay */}
-              <div className="absolute inset-0 z-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+
+              <div className="absolute bottom-6 left-6 right-6 z-20 backdrop-blur-md bg-[#050505]/80 border border-white/10 p-5 rounded-2xl">
+                 <div className="flex justify-between items-end mb-4">
+                   <div>
+                      <div className="text-[10px] text-gray-400 tracking-widest uppercase mb-1">Veículo 01</div>
+                      <div className="text-white font-medium text-lg">Monitoramento Ativo</div>
+                   </div>
+                   <div className="text-xs text-primary font-mono tracking-wider">ON-LINE</div>
+                 </div>
+                 <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                    <div className="w-full h-full bg-primary animate-[pulse_2s_ease-in-out_infinite]" />
+                 </div>
+              </div>
            </div>
         </motion.div>
       </div>
