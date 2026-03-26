@@ -1,5 +1,7 @@
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useAuth, UserRole } from '@/contexts/AuthContext';
+import { verificarVencimento } from '@/services/paymentService';
+import { BlockScreen } from './BlockScreen';
 
 interface ProtectedRouteProps {
   allowedRoles?: UserRole[];
@@ -7,6 +9,7 @@ interface ProtectedRouteProps {
 
 export const ProtectedRoute = ({ allowedRoles }: ProtectedRouteProps) => {
   const { user, isLoading } = useAuth();
+  const location = useLocation();
 
   if (isLoading) {
     return (
@@ -22,6 +25,13 @@ export const ProtectedRoute = ({ allowedRoles }: ProtectedRouteProps) => {
 
   if (allowedRoles && !allowedRoles.includes(user.role)) {
     return <Navigate to="/dashboard" replace />;
+  }
+
+  // Verificar Bloqueio Financeiro para CLIENTES
+  // (Mas não bloqueia se já estiver na página de subscription, para permitir que ele pague)
+  const isFinanceAtrasado = user.role === 'CLIENTE' && verificarVencimento(user.id) === 'atrasado';
+  if (isFinanceAtrasado && !location.pathname.includes('/subscription')) {
+     return <BlockScreen />;
   }
 
   return <Outlet />;

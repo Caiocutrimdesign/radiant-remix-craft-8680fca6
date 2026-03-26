@@ -7,6 +7,7 @@ import { HowItWorksSection } from "@/components/landing/HowItWorksSection";
 import { PlansSection } from "@/components/landing/PlansSection";
 import { SystemPreviewSection } from "@/components/landing/SystemPreviewSection";
 import { SecuritySection } from "@/components/landing/SecuritySection";
+import { TestimonialsSection } from "@/components/landing/TestimonialsSection"; // Added import
 import { ContactSection } from "@/components/landing/ContactSection";
 
 const Index = () => {
@@ -23,6 +24,7 @@ const Index = () => {
         <PlansSection />
         <SystemPreviewSection />
         <SecuritySection />
+        <TestimonialsSection /> {/* Added component */}
         <ContactSection />
       </main>
 

@@ -10,6 +10,7 @@ export const Sidebar = () => {
   const navItems = [
     { label: "Painel Principal", icon: LayoutDashboard, path: "/dashboard", roles: ["ADMIN", "FUNCIONARIO"] },
     { label: "Monitoramento", icon: Car, path: "/dashboard/monitor", roles: ["ADMIN", "CLIENTE", "FUNCIONARIO"] },
+    { label: "Assinatura", icon: CreditCard, path: "/dashboard/subscription", roles: ["CLIENTE"] },
     { label: "Clientes", icon: Users, path: "/dashboard/clients", roles: ["ADMIN", "FUNCIONARIO"] },
     { label: "Veículos", icon: ShieldAlert, path: "/dashboard/vehicles", roles: ["ADMIN", "FUNCIONARIO", "TECNICO"] },
     { label: "Financeiro", icon: CreditCard, path: "/dashboard/finance", roles: ["ADMIN", "CLIENTE"] },

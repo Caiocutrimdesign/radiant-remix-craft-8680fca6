@@ -1,62 +1,92 @@
 import { motion } from "framer-motion";
-import { Navigation, Clock, Power, ShieldAlert, Smartphone } from "lucide-react";
+import { Clock, ShieldAlert, Zap, Lock, MapPin, Wrench } from "lucide-react";
+
+const features = [
+  {
+    icon: Clock,
+    title: "Em tempo real",
+    description: "Visualização de localização, velocidade, trajeto e tempo parado.",
+    color: "from-blue-500 to-primary"
+  },
+  {
+    icon: ShieldAlert,
+    title: "Central de monitoramento",
+    description: "Coordenação e envio de informações em tempo real.",
+    color: "from-purple-500 to-secondary"
+  },
+  {
+    icon: Zap,
+    title: "Toda vez que é ligado",
+    description: "Envio automático de dados via GPS a cada 3 minutos.",
+    color: "from-green-500 to-emerald-400"
+  },
+  {
+    icon: Lock,
+    title: "Bloqueio remoto",
+    description: "Controle direto pelo app ou pela nossa central 24h.",
+    color: "from-red-500 to-orange-500"
+  },
+  {
+    icon: MapPin,
+    title: "Histórico de localização",
+    description: "Acesso completo a rotas, horários e paradas efetuadas.",
+    color: "from-cyan-500 to-blue-400"
+  },
+  {
+    icon: Wrench,
+    title: "Assistência veicular 24h",
+    description: "Reboque, chaveiro, troca de pneu e suporte sempre que precisar.",
+    color: "from-yellow-500 to-orange-400"
+  }
+];
 
 export const BenefitsSection = () => {
-  const benefits = [
-    { icon: Navigation, title: "Rastreamento Real-Time", desc: "Acompanhe seu veículo no mapa com precisão de milissegundos." },
-    { icon: Clock, title: "Histórico de Rotas", desc: "Guarde os trajetos percorridos por até 6 meses com relatórios detalhados." },
-    { icon: Power, title: "Bloqueio Remoto", desc: "Corte inteligente de combustível e ignição com um único clique." },
-    { icon: ShieldAlert, title: "Alertas Inteligentes", desc: "Receba notificações sobre ignição, movimentação suspeita ou saída de área." },
-    { icon: Smartphone, title: "Sistema Responsivo", desc: "Acesse todo o painel pelo celular ou desktop com a mesma fluidez." }
-  ];
-
   return (
-    <section id="beneficios" className="py-24 bg-card relative overflow-hidden">
-      {/* Glow background accents */}
-      <div className="absolute right-0 top-0 w-1/3 h-1/2 bg-secondary/10 blur-[150px] pointer-events-none" />
-      
+    <section id="beneficios" className="py-24 bg-black relative">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:w-1/3 space-y-6"
+            className="text-4xl md:text-5xl font-display font-bold text-white mb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold">Por que escolher a <span className="neon-text-purple">Rastremix</span>?</h2>
-            <p className="text-gray-400 text-lg">
-              Nosso painel não é apenas um localizador, é uma plataforma robusta projetada para você assumir o controle total, de forma fácil e intuitiva.
-            </p>
-            <div className="pt-4">
-              <a href="#planos" className="inline-flex items-center gap-2 text-secondary hover:text-white transition-colors font-bold uppercase tracking-wider">
-                Conhecer os planos <Navigation className="w-5 h-5" />
-              </a>
-            </div>
-          </motion.div>
+             Características do <span className="neon-text-blue">Rastreador</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-gray-400 text-lg"
+          >
+            Tudo o que você precisa para ter controle absoluto e paz de espírito onde quer que seu veículo esteja.
+          </motion.p>
+        </div>
 
-          <div className="lg:w-2/3 grid sm:grid-cols-2 gap-6 w-full">
-            {benefits.map((benefit, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className={`glass-panel p-6 rounded-2xl border-white/5 hover:border-secondary/50 hover:shadow-neon-purple transition-all group ${
-                  idx === benefits.length - 1 ? 'sm:col-span-2 md:col-span-1' : ''
-                }`}
-              >
-                <div className="w-12 h-12 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors text-white group-hover:text-secondary">
-                  <benefit.icon className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">{benefit.title}</h3>
-                <p className="text-sm text-gray-400">{benefit.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-          
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="glass-panel p-8 rounded-2xl border border-white/5 hover:border-primary/50 transition-all group overflow-hidden relative"
+            >
+              {/* Background gradient fade on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              
+              <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-gradient-to-br ${feature.color} bg-opacity-20`}>
+                <feature.icon className="w-7 h-7 text-white" />
+              </div>
+              
+              <h3 className="text-xl font-bold text-white mb-4 group-hover:text-primary transition-colors">{feature.title}</h3>
+              <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

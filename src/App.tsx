@@ -16,6 +16,7 @@ import Finance from "./pages/Finance";
 import Tickets from "./pages/Tickets";
 import NotFound from "./pages/NotFound";
 import Index from "./pages/Index";
+import Subscription from "./pages/Subscription";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
                 <Route path="/dashboard/vehicles" element={<Vehicles />} />
                 <Route path="/dashboard/finance" element={<Finance />} />
                 <Route path="/dashboard/tickets" element={<Tickets />} />
+                <Route path="/dashboard/subscription" element={<Subscription />} />
               </Route>
             </Route>
             

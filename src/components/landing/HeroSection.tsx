@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Shield, ChevronRight } from "lucide-react";
+import { Shield, ChevronRight, MessageCircle } from "lucide-react";
 
 export const HeroSection = () => {
+  const whatsappLink = "https://wa.me/5598985992136?text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+o+plano+de+rastreamento+de+R%24+50%2Fm%C3%AAs.";
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-black">
       {/* Background Animated Elements */}
@@ -15,37 +17,49 @@ export const HeroSection = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8"
+          className="space-y-6"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-2">
             <Shield className="w-4 h-4" />
             <span>Sistema Avançado de Rastreamento</span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight">
-            Proteja seu veículo com tecnologia inteligente <span className="neon-text-blue block">RASTREMIX</span>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight text-white shadow-black drop-shadow-lg">
+            Rastreamento Veicular <span className="neon-text-blue block">Inteligente</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-400 max-w-xl">
-            Monitoramento em tempo real, segurança 24h e controle total na palma da sua mão. Garanta a proteção que seu patrimônio merece com o sistema mais futurista do mercado.
+          <p className="text-lg md:text-xl text-gray-300 max-w-xl leading-relaxed">
+            O Rastreador Veicular da Rastremix é a solução perfeita para proteger seu veículo 24 horas por dia.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          <div className="py-6 my-2 border-y border-white/10 bg-black/40 p-4 rounded-xl border border-primary/20 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors" />
+            <h2 className="text-4xl md:text-5xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary animate-pulse-glow-blue drop-shadow-[0_0_15px_rgba(0,243,255,0.8)]">
+              A partir de R$ 50,00/mês
+            </h2>
+            <p className="text-xs text-gray-500 mt-2 italic flex items-center gap-1">
+              *Consulte valores para o seu veículo. Instalação grátis nos planos anuais.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 pt-2">
+            <a 
+              href={whatsappLink}
+              target="_blank"
+              rel="noreferrer"
+              className="group relative px-8 py-5 bg-[#25D366] text-black font-black text-lg rounded-xl overflow-hidden shadow-[0_0_25px_rgba(37,211,102,0.5)] hover:shadow-[0_0_50px_rgba(37,211,102,0.8)] transition-all flex items-center justify-center gap-3 transform hover:scale-105"
+            >
+              <div className="absolute inset-0 w-full h-full bg-white/30 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+              <MessageCircle className="w-7 h-7 fill-black" />
+              <span>FALAR COM UM CONSULTOR</span>
+            </a>
+            
             <Link 
               to="/login"
-              className="group relative px-8 py-4 bg-primary text-black font-bold rounded-lg overflow-hidden shadow-[0_0_20px_rgba(0,243,255,0.4)] hover:shadow-[0_0_40px_rgba(0,243,255,0.6)] transition-all flex items-center justify-center gap-2"
+              className="px-8 py-5 border-2 border-primary/50 text-white font-bold rounded-xl hover:bg-primary hover:text-black transition-all flex items-center justify-center"
             >
-              <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-              <span>ENTRAR NO SISTEMA</span>
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              ACESSAR SISTEMA
             </Link>
-            
-            <a 
-              href="#planos"
-              className="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-lg hover:bg-white/10 transition-all flex items-center justify-center"
-            >
-              VER PLANOS
-            </a>
           </div>
         </motion.div>
 
@@ -56,44 +70,44 @@ export const HeroSection = () => {
           className="relative hidden lg:block"
         >
           <div className="relative w-full aspect-square animate-float">
-            {/* 3D Car Placeholder Simulation using Glow Rings and a layered image */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-3xl opacity-50" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-secondary/30 rounded-full blur-[100px] opacity-60" />
             
-            {/* Mockup Frame / Dashboard Preview hovering */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3/4 p-4 glass-panel rounded-2xl shadow-neon-blue border-white/10 rotate-y-[-10deg] rotate-x-[10deg] transform-gpu">
-              <div className="flex justify-between items-center mb-4 border-b border-white/10 pb-2">
-                <div className="text-xs font-mono text-primary">RST-2026 - Conectado</div>
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              </div>
-              <div className="space-y-3">
-                <div className="h-2 bg-white/10 rounded-full w-full overflow-hidden">
-                  <div className="h-full bg-primary w-2/3 shadow-glow" />
-                </div>
-                <div className="h-2 bg-white/10 rounded-full w-4/5 overflow-hidden">
-                  <div className="h-full bg-secondary w-1/2 shadow-neon-purple" />
-                </div>
-              </div>
-              
-              <div className="mt-6 flex justify-between">
-                <div>
-                  <div className="text-[10px] text-gray-500 uppercase">Velocidade Atual</div>
-                  <div className="text-2xl font-bold text-white font-display">65 <span className="text-sm text-gray-400">km/h</span></div>
-                </div>
-                <div className="w-10 h-10 rounded-full border border-primary/50 flex items-center justify-center text-primary">
-                  <Shield className="w-5 h-5" />
-                </div>
-              </div>
-            </div>
+            {/* Visual representation / GIF Simulator (Car + Tech) */}
+            <div className="absolute inset-0 p-8">
+              <div className="w-full h-full glass-panel rounded-3xl border border-primary/30 shadow-[0_0_50px_rgba(0,243,255,0.2)] relative overflow-hidden transform-gpu perspective-1000 rotate-y-[-5deg]">
+                 
+                 {/* Decorative Map BG */}
+                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop')] bg-cover opacity-20 mix-blend-luminosity filter grayscale" />
+                 <div className="absolute inset-0 bg-black/50" />
+                 
+                 {/* Tracking Line Animation */}
+                 <svg className="absolute inset-0 w-full h-full z-10" preserveAspectRatio="none">
+                    <path d="M 0,200 Q 150,50 300,150 T 600,100" fill="none" stroke="rgba(0,243,255,0.4)" strokeWidth="4" strokeDasharray="10 10" className="animate-[dash_20s_linear_infinite]" />
+                 </svg>
 
-            {/* Simulated 3D Car Map Overlay */}
-            <div className="absolute left-0 bottom-1/4 w-2/3 p-4 glass-panel rounded-2xl shadow-neon-purple border-white/10 rotate-y-[10deg] transform-gpu -translate-x-12 translate-y-12 backdrop-blur-3xl">
-              <div className="relative w-full h-32 rounded-xl border border-white/5 bg-black/50 overflow-hidden flex items-center justify-center">
-                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:10px_10px] opacity-20" />
-                 <div className="w-4 h-4 rounded-full bg-red-500 shadow-[0_0_15px_rgba(255,0,0,0.8)] animate-pulse relative z-10" />
-                 {/* Map rings */}
-                 <div className="absolute w-16 h-16 rounded-full border border-primary/20 animate-[ping_3s_linear_infinite]" />
-                 <div className="absolute w-32 h-32 rounded-full border border-primary/10 animate-[ping_4s_linear_infinite]" />
-                 <div className="absolute bottom-2 left-2 text-[10px] text-primary font-mono">LAT -23.5505 / LNG -46.6333</div>
+                 {/* Car Image Proxy - Will use a highly styled placeholder or fallback to an unsplash car image */}
+                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-auto z-20">
+                   <img 
+                      src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=800&auto=format&fit=crop" 
+                      alt="Carro Futurista"
+                      className="w-full object-contain filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)] rounded-xl brightness-75 contrast-125"
+                   />
+                 </div>
+
+                 {/* Radar Scans */}
+                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] aspect-square border-2 border-primary/20 rounded-full animate-[ping_4s_ease-out_infinite] z-0" />
+                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] aspect-square border-2 border-secondary/30 rounded-full animate-[ping_3s_ease-out_infinite_0.5s] z-0" />
+
+                 {/* Status Overlay */}
+                 <div className="absolute bottom-6 left-6 right-6 glass-panel bg-black/80 border-primary/30 p-4 rounded-xl flex items-center justify-between z-30 shadow-neon-blue">
+                   <div>
+                     <div className="text-primary text-xs font-mono mb-1">STATUS DO VEÍCULO</div>
+                     <div className="text-white font-bold tracking-widest">MONITORAMENTO ATIVO</div>
+                   </div>
+                   <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                     <div className="w-4 h-4 bg-primary rounded-full animate-pulse shadow-[0_0_15px_rgba(0,243,255,1)]" />
+                   </div>
+                 </div>
               </div>
             </div>
             
