@@ -1,3 +1,4 @@
+import { TopBar } from "@/components/landing/TopBar";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { HeroSection } from "@/components/landing/HeroSection";
@@ -12,7 +13,8 @@ import { ContactSection } from "@/components/landing/ContactSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden pt-20">
+    <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden pt-[116px]">
+      <TopBar />
       <Navbar />
       
       {/* Sections */}
