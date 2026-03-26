@@ -20,8 +20,8 @@ export const Navbar = () => {
     { label: "Início", id: "inicio" },
     { label: "Empresa", id: "sobre" },
     { label: "Planos", id: "planos" },
-    { label: "Nossas Unidades", id: "contato" },
-    { label: "Assistência 24h", id: "beneficios" },
+    { label: "Nossas Unidades", id: "unidades" },
+    { label: "Assistência 24 Horas", id: "contato" },
     { label: "Depoimentos", id: "depoimentos" },
   ];
 
@@ -92,7 +92,7 @@ export const Navbar = () => {
         <div className="flex justify-end lg:hidden col-span-1">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-white"
+            className="p-2 text-gray-800"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
