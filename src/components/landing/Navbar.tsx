@@ -30,12 +30,11 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* LOGO */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="relative w-10 h-10 flex items-center justify-center bg-black rounded-full border-2 border-primary overflow-hidden shadow-[0_0_15px_rgba(0,243,255,0.4)] group-hover:shadow-[0_0_25px_rgba(255,0,0,0.6)] transition-all">
-            <img src="/logo.png" alt="Rastremix Logo" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-            <ShieldAlert className="absolute w-6 h-6 text-primary group-hover:text-red-500 transition-colors -z-10" />
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="relative h-12 flex items-center justify-center overflow-hidden transition-all group-hover:scale-105">
+            <img src="/2222.png" alt="Rastremix Logo" className="h-full w-auto object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
           </div>
-          <span className="font-display font-bold text-2xl tracking-wider text-white">
+          <span className="font-display font-bold text-2xl tracking-wider text-white hidden sm:block">
             RASTRE<span className="text-red-500">MIX</span>
           </span>
         </Link>

@@ -12,10 +12,9 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2 group mb-6">
-              <div className="relative w-10 h-10 flex items-center justify-center bg-black rounded-full border-2 border-primary overflow-hidden shadow-[0_0_15px_rgba(0,243,255,0.4)]">
-                <img src="/logo.png" alt="Rastremix Logo" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-                <ShieldAlert className="absolute w-6 h-6 text-primary -z-10" />
+            <Link to="/" className="flex items-center gap-3 group mb-6">
+              <div className="relative h-14 flex items-center justify-center transition-all group-hover:scale-105">
+                <img src="/2222.png" alt="Rastremix Logo" className="h-full w-auto object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
               </div>
               <span className="font-display font-bold text-2xl tracking-wider text-white">
                 RASTRE<span className="text-red-500">MIX</span>
