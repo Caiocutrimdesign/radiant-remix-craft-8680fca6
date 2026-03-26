@@ -15,6 +15,7 @@ import Vehicles from "./pages/Vehicles";
 import Finance from "./pages/Finance";
 import Tickets from "./pages/Tickets";
 import NotFound from "./pages/NotFound";
+import Index from "./pages/Index";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
         <AuthProvider>
           <Routes>
             <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Index />} />
             
             <Route element={<ProtectedRoute />}>
               <Route element={<AppLayout />}>
@@ -37,7 +39,6 @@ const App = () => (
                 <Route path="/dashboard/finance" element={<Finance />} />
                 <Route path="/dashboard/tickets" element={<Tickets />} />
               </Route>
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
             </Route>
             
             <Route path="*" element={<NotFound />} />
